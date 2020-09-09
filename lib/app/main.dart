@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_snippets/pages/splash/splash.dart';
+import 'package:flutter_snippets/app/routes.dart';
+import 'package:flutter_snippets/config/constants.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.red,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Splash(),
+      initialRoute: RouteName.splash,
+      routes: routes,
     );
   }
 }
