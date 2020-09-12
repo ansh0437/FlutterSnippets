@@ -13,6 +13,10 @@ abstract class BaseState<T extends BaseWidget> extends State<T> {
     );
   }
 
+  double getWidth() => MediaQuery.of(context).size.width;
+
+  double getHeight() => MediaQuery.of(context).size.height;
+
   void push(String routeName, {Object data}) {
     Navigator.of(context).pushNamed(routeName, arguments: data);
   }

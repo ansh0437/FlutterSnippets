@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_snippets/theme/text_field_style.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -6,6 +7,7 @@ class CustomTextField extends StatelessWidget {
       {this.label = "",
       this.initialValue = "",
       this.keyboardType = TextInputType.text,
+      this.inputFormatters = const <TextInputFormatter>[],
       this.padding = const EdgeInsets.all(0),
       this.inputOnChange,
       this.inputValidator})
@@ -15,6 +17,7 @@ class CustomTextField extends StatelessWidget {
   final String initialValue;
 
   final TextInputType keyboardType;
+  final List<TextInputFormatter> inputFormatters;
 
   final EdgeInsets padding;
 
@@ -28,6 +31,9 @@ class CustomTextField extends StatelessWidget {
         child: TextFormField(
           decoration: inputDecoration(label),
           keyboardType: keyboardType,
+          minLines: 1,
+          maxLines: keyboardType == TextInputType.multiline ? 5 : 1,
+          inputFormatters: inputFormatters,
           initialValue: initialValue,
           onChanged: inputOnChange,
           validator: inputValidator,

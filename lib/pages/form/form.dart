@@ -3,89 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_snippets/components/base_widget.dart';
 import 'package:flutter_snippets/components/text_field.dart';
 import 'package:flutter_snippets/models/tutorial.dart';
-
-class FormData {
-  FormData(
-      {this.username = "",
-      this.fullName = "",
-      this.email = "",
-      this.phone = "",
-      this.address = "",
-      this.password = ""});
-
-  /// Username
-  String username;
-
-  String usernameValidator(String value) {
-    return value.isEmpty ? "Enter username" : null;
-  }
-
-  void usernameOnChange(String value) {
-    username = value;
-  }
-
-  /// Full Name
-
-  String fullName;
-
-  String fullNameValidator(String value) {
-    return value.isEmpty ? "Enter full name" : null;
-  }
-
-  void fullNameOnChange(String value) {
-    fullName = value;
-  }
-
-  /// Email
-
-  String email;
-
-  String emailValidator(String value) {
-    return value.isEmpty ? "Enter email" : null;
-  }
-
-  void emailOnChange(String value) {
-    email = value;
-  }
-
-  /// Phone
-  String phone;
-
-  String phoneValidator(String value) {
-    return value.isEmpty ? "Enter phone number" : null;
-  }
-
-  void phoneOnChange(String value) {
-    phone = value;
-  }
-
-  /// Address
-  String address;
-
-  String addressValidator(String value) {
-    return value.isEmpty ? "Enter address" : null;
-  }
-
-  void addressOnChange(String value) {
-    address = value;
-  }
-
-  /// Password
-  String password;
-
-  String passwordValidator(String value) {
-    return value.isEmpty ? "Enter password" : null;
-  }
-
-  void passwordOnChange(String value) {
-    password = value;
-  }
-
-  @override
-  String toString() {
-    return "FormData($username, $fullName, $email, $phone, $address, $password)";
-  }
-}
+import 'package:flutter_snippets/pages/form/form_data.dart';
 
 class BasicForm extends BaseWidget {
   @override
@@ -99,16 +17,13 @@ class _FormState extends BaseState<BasicForm> {
   Tutorial tutorial;
   FormData _formData = FormData();
 
+  bool passwordVisible = false;
+
   void _onSubmit() {
     _formKey.currentState.validate();
     SnackBar snackBar = SnackBar(content: Text(_formData.toString()));
     _scaffoldKey.currentState.showSnackBar(snackBar);
   }
-
-  InputDecoration _inputDecoration(label) => InputDecoration(
-        border: OutlineInputBorder(),
-        labelText: label,
-      );
 
   @override
   Widget build(BuildContext context) {
@@ -146,34 +61,46 @@ class _FormState extends BaseState<BasicForm> {
                       inputValidator: _formData.emailValidator,
                       inputOnChange: _formData.emailOnChange,
                     ),
+                    CustomTextField(
+                      label: "Phone",
+                      initialValue: _formData.phone,
+                      keyboardType: TextInputType.phone,
+                      inputFormatters: [
+                        WhitelistingTextInputFormatter.digitsOnly
+                      ],
+                      padding: EdgeInsets.only(top: 20),
+                      inputValidator: _formData.phoneValidator,
+                      inputOnChange: _formData.phoneOnChange,
+                    ),
+                    CustomTextField(
+                      label: "Address",
+                      initialValue: _formData.address,
+                      keyboardType: TextInputType.multiline,
+                      padding: EdgeInsets.only(top: 20),
+                      inputValidator: _formData.addressValidator,
+                      inputOnChange: _formData.addressOnChange,
+                    ),
                     Padding(
                         padding: EdgeInsets.only(top: 20),
                         child: TextFormField(
-                          decoration: _inputDecoration("Phone"),
-                          keyboardType: TextInputType.phone,
-                          inputFormatters: <TextInputFormatter>[
-                            WhitelistingTextInputFormatter.digitsOnly
-                          ],
-                          initialValue: _formData.phone,
-                          onChanged: _formData.phoneOnChange,
-                          validator: _formData.phoneValidator,
-                        )),
-                    Padding(
-                        padding: EdgeInsets.only(top: 20),
-                        child: TextFormField(
-                          decoration: _inputDecoration("Address"),
-                          keyboardType: TextInputType.multiline,
-                          minLines: 1,
-                          maxLines: 5,
-                          initialValue: _formData.address,
-                          onChanged: _formData.addressOnChange,
-                          validator: _formData.addressValidator,
-                        )),
-                    Padding(
-                        padding: EdgeInsets.only(top: 20),
-                        child: TextFormField(
-                          decoration: _inputDecoration("Password"),
-                          obscureText: true,
+                          decoration: InputDecoration(
+                              labelText: 'Password',
+                              border: OutlineInputBorder(),
+                              suffixIcon: IconButton(
+                                icon: Icon(
+                                    passwordVisible
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
+                                    color: passwordVisible
+                                        ? Colors.purple
+                                        : Colors.grey),
+                                onPressed: () {
+                                  setState(() {
+                                    passwordVisible = !passwordVisible;
+                                  });
+                                },
+                              )),
+                          obscureText: !passwordVisible,
                           initialValue: _formData.password,
                           onChanged: _formData.passwordOnChange,
                           validator: _formData.passwordValidator,
@@ -181,7 +108,7 @@ class _FormState extends BaseState<BasicForm> {
                     Padding(
                         padding: EdgeInsets.only(top: 20),
                         child: ButtonTheme(
-                          minWidth: 250,
+                          minWidth: getWidth(),
                           height: 40,
                           child: RaisedButton(
                             shape: RoundedRectangleBorder(
