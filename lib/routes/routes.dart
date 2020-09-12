@@ -4,6 +4,8 @@ import 'package:flutter_snippets/config/constants.dart';
 import 'package:flutter_snippets/pages/back/back.dart';
 import 'package:flutter_snippets/pages/form/form.dart';
 import 'package:flutter_snippets/pages/home/home.dart';
+import 'package:flutter_snippets/pages/image/image.dart';
+import 'package:flutter_snippets/pages/sheet/bottom_sheet.dart';
 import 'package:flutter_snippets/pages/splash/splash.dart';
 
 class Router {
@@ -13,6 +15,8 @@ class Router {
       RouteName.home: (context) => Home(),
       RouteName.back: (_) => Back(),
       RouteName.form: (_) => BasicForm(),
+      RouteName.urlImage: (_) => ImagePage(),
+      RouteName.bottomSheet: (_) => BottomSheetPage(),
     };
   }
 

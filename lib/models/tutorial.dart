@@ -21,8 +21,15 @@ class Tutorial {
           colors[0]),
       Tutorial("Simple Form", "Simple form with basic fields.", RouteName.form,
           colors[1]),
-      // Tutorial("Url Image", "Load image from url.", RouteName.urlImage,
-      //     colors[random.nextInt(length)]),
+      Tutorial(
+          "Url Image", "Load image from url.", RouteName.urlImage, colors[2]),
+      Tutorial(
+          "Bottom Sheet",
+          "Different types of bottom sheets for displaying data or asking confirmation from user.",
+          RouteName.bottomSheet,
+          colors[3]),
+      Tutorial("Image Chooser", "Choose image from camera or gallery options.",
+          RouteName.imageChooser, colors[4]),
     ];
   }
 }

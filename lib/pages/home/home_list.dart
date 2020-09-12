@@ -41,7 +41,7 @@ class HomeListCell extends BaseStatelessWidget {
     return GestureDetector(
       onTap: _handleCardTap,
       child: Card(
-        margin: EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
+        margin: EdgeInsets.all(10.0),
         color: tutorial.color.shade100,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8.0),

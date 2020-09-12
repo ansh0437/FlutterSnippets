@@ -4,4 +4,6 @@ class RouteName {
   static const back = "/back";
   static const form = "/form";
   static const urlImage = "/urlImage";
+  static const bottomSheet = "/bottomSheet";
+  static const imageChooser = "/imageChooser";
 }
