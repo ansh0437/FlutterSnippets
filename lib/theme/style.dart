@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
 final List colors = [
-  Colors.red.shade500,
-  Colors.blue.shade500,
-  Colors.yellow.shade500,
-  Colors.green.shade500,
-  Colors.pink.shade500,
-  Colors.purple.shade500,
-  Colors.orange.shade500,
-  Colors.grey.shade500,
-  Colors.blueGrey.shade500,
-  Colors.brown.shade500,
-  Colors.cyan.shade500,
-  Colors.indigo.shade500,
-  Colors.teal.shade500,
+  Colors.red,
+  Colors.blue,
+  Colors.yellow,
+  Colors.green,
+  Colors.pink,
+  Colors.purple,
+  Colors.orange,
+  Colors.grey,
+  Colors.blueGrey,
+  Colors.brown,
+  Colors.cyan,
+  Colors.indigo,
+  Colors.teal,
 ];
 
 ThemeData appTheme() {

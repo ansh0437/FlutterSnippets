@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_snippets/components/base_widget.dart';
 import 'package:flutter_snippets/models/tutorial.dart';
 
 import 'home_list.dart';
 
-class Home extends StatefulWidget {
+class Home extends BaseWidget {
   @override
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends BaseState<Home> {
+  final String _title = "Flutter Snippets";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Flutter Snippets"),
-      ),
+      appBar: appBar(_title),
       backgroundColor: Colors.white,
       body: HomeListView(homeDelegate: _handleHomeDelegate),
     );
   }
 
   void _handleHomeDelegate(Tutorial tutorial) {
-    Navigator.of(context).pushNamed(tutorial.routeName);
+    push(tutorial.routeName, data: tutorial);
   }
 }

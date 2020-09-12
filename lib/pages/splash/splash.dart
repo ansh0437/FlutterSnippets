@@ -1,29 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_snippets/config/constants.dart';
+import 'package:flutter_snippets/components/base_widget.dart';
 
-class Splash extends StatefulWidget {
+class Splash extends BaseWidget {
   @override
   _SplashState createState() => _SplashState();
 }
 
-class _SplashState extends State<Splash> {
+class _SplashState extends BaseState<Splash> {
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(milliseconds: 2000), () {
+      _openHomePage();
+    });
+  }
+
   void _openHomePage() {
-    Navigator.popAndPushNamed(context, RouteName.home);
-    // Navigator.pushNamedAndRemoveUntil(
-    //     context, RouteName.home, (Route<dynamic> route) => false);
-    // Navigator.pushNamed(context, RouteName.home);
+    popPush(RouteName.home);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue.shade900,
+      backgroundColor: Colors.purple.shade900,
       body: Center(
           child: GestureDetector(
         onTap: _openHomePage,
         child: Text(
           "Flutter Snippets",
-          style: TextStyle(color: Colors.white, fontSize: 24),
+          style: TextStyle(
+              color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),
         ),
       )),
     );

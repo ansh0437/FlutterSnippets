@@ -1,7 +1,7 @@
 class RouteName {
-  static final splash = "/";
-  static final home = "/home";
-  static final login = "/login";
-  static final urlImage = "/urlImage";
-  static final back = "/back";
+  static const splash = "/";
+  static const home = "/home";
+  static const back = "/back";
+  static const form = "/form";
+  static const urlImage = "/urlImage";
 }

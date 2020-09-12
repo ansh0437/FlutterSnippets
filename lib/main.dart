@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_snippets/app/routes.dart';
 import 'package:flutter_snippets/config/constants.dart';
+import 'package:flutter_snippets/routes/routes.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,11 +13,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Snippets',
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.purple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       initialRoute: RouteName.splash,
-      routes: routes,
+      routes: Router.getRoutes(),
+      // onGenerateRoute: Router.generateRoute,
     );
   }
 }

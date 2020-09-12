@@ -1,14 +1,34 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_snippets/components/base_widget.dart';
+import 'package:flutter_snippets/models/tutorial.dart';
 
-class Back extends StatefulWidget {
+class Back extends BaseWidget {
   @override
   _BackState createState() {
     return _BackState();
   }
 }
 
-class _BackState extends State<Back> {
+class _BackState extends BaseState<Back> {
+  Tutorial tutorial;
+
+  @override
+  Widget build(BuildContext context) {
+    tutorial = ModalRoute.of(context).settings.arguments;
+
+    return WillPopScope(
+      onWillPop: _onBackPressed,
+      child: Scaffold(
+        appBar: appBar(tutorial.title),
+        backgroundColor: Colors.white,
+        body: Center(
+          child: Text("Back Detector...", style: TextStyle(fontSize: 24)),
+        ),
+      ),
+    );
+  }
+
   Future<bool> _onBackPressed() {
     return showDialog(
       context: context,
@@ -25,22 +45,6 @@ class _BackState extends State<Back> {
             child: Text("Go Back"),
           ),
         ],
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: _onBackPressed,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text("Back"),
-        ),
-        backgroundColor: Colors.white,
-        body: Center(
-          child: Text("Back Detector..."),
-        ),
       ),
     );
   }

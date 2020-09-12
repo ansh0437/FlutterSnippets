@@ -1,13 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_snippets/models/tutorial.dart';
+import 'package:flutter_snippets/components/base_widget.dart';
 import 'package:flutter_snippets/theme/style.dart';
 
 /// Home List Item Click Listener
 typedef void HomeDelegate(Tutorial tutorial);
 
 /// Home List View
-class HomeListView extends StatelessWidget {
+class HomeListView extends BaseStatelessWidget {
   HomeListView({this.homeDelegate}) : super();
 
   final _tutorialList = Tutorial.getList();
@@ -15,19 +16,17 @@ class HomeListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: _tutorialList.map((Tutorial tutorial) {
-        return HomeListCell(
-          tutorial: tutorial,
-          homeDelegate: homeDelegate,
-        );
-      }).toList(),
-    );
+    return ListView.builder(
+        itemCount: _tutorialList.length,
+        itemBuilder: (context, index) {
+          return HomeListCell(
+              tutorial: _tutorialList[index], homeDelegate: homeDelegate);
+        });
   }
 }
 
 /// Home List View Cell
-class HomeListCell extends StatelessWidget {
+class HomeListCell extends BaseStatelessWidget {
   HomeListCell({this.tutorial, this.homeDelegate}) : super();
 
   final Tutorial tutorial;
@@ -43,10 +42,11 @@ class HomeListCell extends StatelessWidget {
       onTap: _handleCardTap,
       child: Card(
         margin: EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
-        color: Colors.white,
+        color: tutorial.color.shade100,
         shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.0),
-            side: BorderSide(color: tutorial.color)),
+          borderRadius: BorderRadius.circular(8.0),
+          /*side: BorderSide(color: tutorial.color.shade900)*/
+        ),
         elevation: 8,
         child: Container(
           padding: EdgeInsets.all(10.0),
