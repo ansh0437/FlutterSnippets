@@ -21,12 +21,13 @@ abstract class BaseState<T extends BaseWidget> extends State<T> {
     Navigator.of(context).pushNamed(routeName, arguments: data);
   }
 
-  void popPush(String routeName) {
-    Navigator.of(context).popAndPushNamed(routeName);
+  void popPush(String routeName, {Object data}) {
+    Navigator.of(context).popAndPushNamed(routeName, arguments: data);
   }
 
-  void pushClear(String routeName) {
-    Navigator.of(context)
-        .pushNamedAndRemoveUntil(routeName, (Route<dynamic> route) => false);
+  void pushClear(String routeName, {Object data}) {
+    Navigator.of(context).pushNamedAndRemoveUntil(
+        routeName, (Route<dynamic> route) => false,
+        arguments: data);
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_snippets/components/base_widget.dart';
+import 'package:flutter_snippets/config/strings.dart';
 import 'package:flutter_snippets/models/tutorial.dart';
 
 import 'home_list.dart';
@@ -10,12 +11,26 @@ class Home extends BaseWidget {
 }
 
 class _HomeState extends BaseState<Home> {
-  final String _title = "Flutter Snippets";
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(_title),
+      appBar: AppBar(
+        backgroundColor: Colors.purple.shade900,
+        title: Text(Strings.appName),
+        actions: <Widget>[
+          PopupMenuButton<String>(
+            onSelected: (value) {},
+            itemBuilder: (BuildContext context) {
+              return {'Settings', 'Logout'}.map((String choice) {
+                return PopupMenuItem<String>(
+                  value: choice,
+                  child: Text(choice),
+                );
+              }).toList();
+            },
+          )
+        ],
+      ),
       backgroundColor: Colors.white,
       body: HomeListView(homeDelegate: _handleHomeDelegate),
     );
