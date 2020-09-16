@@ -28,8 +28,25 @@ class Tutorial {
           "Different types of bottom sheets for displaying data or asking confirmation from user.",
           RouteName.bottomSheet,
           colors[3]),
+      Tutorial(
+          "Permissions",
+          "Different permissions used in android/iOS applications.",
+          RouteName.permission,
+          colors[4]),
       Tutorial("Image Chooser", "Choose image from camera or gallery options.",
-          RouteName.imageChooser, colors[4]),
+          RouteName.imageChooser, colors[5]),
+      Tutorial("File Picker", "Choose different types of files from device.",
+          RouteName.filePicker, colors[6]),
+      Tutorial(
+          "Alert Dialog",
+          "Different types of alert dialogs for displaying data or asking confirmation from user.",
+          RouteName.alertDialog,
+          colors[7]),
     ];
   }
 }
+
+/// Navigation Drawer, Bottom Navigation, Google Maps, Firebase Authentication,
+/// Firebase Push Notifications, View Pager, Api Calling, Json Parsing,
+/// In-App Camera, Fingerprint Authentication, Database, Open External Apps,
+/// Alert Dialogs,

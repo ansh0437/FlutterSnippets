@@ -8,8 +8,6 @@ final List colors = [
   Colors.pink,
   Colors.purple,
   Colors.orange,
-  Colors.grey,
-  Colors.blueGrey,
   Colors.brown,
   Colors.cyan,
   Colors.indigo,
@@ -34,5 +32,6 @@ TextStyle boldTitle() {
 }
 
 TextStyle normalDescription() {
-  return TextStyle(fontWeight: FontWeight.normal, fontSize: 12, color: Colors.grey.shade700);
+  return TextStyle(
+      fontWeight: FontWeight.normal, fontSize: 12, color: Colors.grey.shade700);
 }

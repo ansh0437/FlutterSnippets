@@ -6,6 +6,8 @@ abstract class BaseWidget extends StatefulWidget {}
 abstract class BaseStatelessWidget extends StatelessWidget {}
 
 abstract class BaseState<T extends BaseWidget> extends State<T> {
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
   AppBar appBar(String title) {
     return AppBar(
       backgroundColor: Colors.purple.shade900,
@@ -13,9 +15,21 @@ abstract class BaseState<T extends BaseWidget> extends State<T> {
     );
   }
 
+  Scaffold scaffoldBody({String title, Widget body}) {
+    return Scaffold(
+      key: scaffoldKey,
+      appBar: appBar(title),
+      body: body,
+    );
+  }
+
   double getWidth() => MediaQuery.of(context).size.width;
 
   double getHeight() => MediaQuery.of(context).size.height;
+
+  void goBack() {
+    Navigator.of(context).pop();
+  }
 
   void push(String routeName, {Object data}) {
     Navigator.of(context).pushNamed(routeName, arguments: data);

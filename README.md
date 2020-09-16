@@ -1,4 +1,4 @@
-# flutter_snippets
+# Flutter Snippets
 
 A new Flutter application.
 

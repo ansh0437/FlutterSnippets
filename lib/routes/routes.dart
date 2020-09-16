@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_snippets/config/constants.dart';
+import 'package:flutter_snippets/pages/alert/alert_dialog.dart';
 import 'package:flutter_snippets/pages/back/back.dart';
+import 'package:flutter_snippets/pages/file/file_picker.dart';
 import 'package:flutter_snippets/pages/form/form.dart';
 import 'package:flutter_snippets/pages/home/home.dart';
 import 'package:flutter_snippets/pages/image/image.dart';
+import 'package:flutter_snippets/pages/image/image_chooser.dart';
+import 'package:flutter_snippets/pages/permission/permission.dart';
 import 'package:flutter_snippets/pages/sheet/bottom_sheet.dart';
 import 'package:flutter_snippets/pages/splash/splash.dart';
 
@@ -17,6 +21,10 @@ class Router {
       RouteName.form: (_) => BasicForm(),
       RouteName.urlImage: (_) => ImagePage(),
       RouteName.bottomSheet: (_) => BottomSheetPage(),
+      RouteName.permission: (_) => PermissionPage(),
+      RouteName.imageChooser: (_) => ImageChooser(),
+      RouteName.filePicker: (_) => FilePickerPage(),
+      RouteName.alertDialog: (_) => AlertDialogPage(),
     };
   }
 
