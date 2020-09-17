@@ -9,4 +9,9 @@ class RouteName {
   static const imageChooser = "/imageChooser";
   static const filePicker = "/filePicker";
   static const alertDialog = "/alertDialog";
+  static const drawer = "/drawer";
+  static const bottom = "/bottom";
+  static const pager = "/pager";
+  static const data = "/data";
+  static const appBar = "/appBar";
 }

@@ -153,6 +153,57 @@ class _AlertDialogPageState extends BaseState<AlertDialogPage> {
         });
   }
 
+  void _listAlert() {
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) {
+          return Dialog(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+              elevation: 0.0,
+              child: Container(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Expanded(
+                          child: Padding(
+                              padding: EdgeInsets.only(left: 10, top: 10),
+                              child: Text("List",
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(fontSize: 24))),
+                        ),
+                        IconButton(
+                            padding: EdgeInsets.only(top: 10),
+                            icon: Icon(Icons.close),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            })
+                      ],
+                    ),
+                    Flexible(
+                      child: ListView.builder(
+                        itemCount: 50,
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                              leading: Icon(Icons.ac_unit),
+                              title: Text('List Item $index'),
+                              subtitle: Text("List Description $index"),
+                              trailing: Icon(Icons.favorite),
+                              onTap: () => Navigator.pop(context));
+                        },
+                      ),
+                    )
+                  ],
+                ),
+              ));
+        });
+  }
+
   Widget build(BuildContext context) {
     tutorial = ModalRoute.of(context).settings.arguments;
 
@@ -168,7 +219,10 @@ class _AlertDialogPageState extends BaseState<AlertDialogPage> {
               buildRaisedButton(
                   title: "Info Alert 2",
                   width: getWidth(),
-                  onPress: _infoAlert2)
+                  onPress: _infoAlert2),
+              SizedBox(height: 10),
+              buildRaisedButton(
+                  title: "List Alert", width: getWidth(), onPress: _listAlert)
             ],
           ),
         ));

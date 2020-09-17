@@ -9,18 +9,18 @@ typedef void HomeDelegate(Tutorial tutorial);
 
 /// Home List View
 class HomeListView extends BaseStatelessWidget {
-  HomeListView({this.homeDelegate}) : super();
+  HomeListView({this.tutorialList, this.homeDelegate}) : super();
 
-  final _tutorialList = Tutorial.getList();
+  final List<Tutorial> tutorialList;
   final HomeDelegate homeDelegate;
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        itemCount: _tutorialList.length,
+        itemCount: tutorialList.length,
         itemBuilder: (context, index) {
           return HomeListCell(
-              tutorial: _tutorialList[index], homeDelegate: homeDelegate);
+              tutorial: tutorialList[index], homeDelegate: homeDelegate);
         });
   }
 }
